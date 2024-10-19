@@ -57,8 +57,8 @@ APT事件相关披露博客：
 -   https://github.com/ffffffff0x/1earn/blob/master/1earn/Security/BlueTeam/%E7%AC%94%E8%AE%B0/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81.md  非常不错的取证总结
 
 -   内存取证
--         https://github.com/ufrisk/MemProcFS    非常强大的内存取证以及分析工具
--         https://github.com/Velocidex/WinPmem    windows物理内存全量dump开源项目
+    -    https://github.com/ufrisk/MemProcFS    非常强大的内存取证以及分析工具
+    -    https://github.com/Velocidex/WinPmem    windows物理内存全量dump开源项目
 
 
 情报分析：
