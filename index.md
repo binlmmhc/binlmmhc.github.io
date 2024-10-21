@@ -38,6 +38,7 @@ APT事件相关披露博客：
 安全研究：
 -   https://lolbas-project.github.io/   无文件技术、文件、脚本研究技术
 -   https://mez0.cc/    对于windows安全取证技术的研究，值得一看
+-   https://www.ired.team/   红队技术收集及教程，值得一看
 
 逆向学习：
 -   https://exploitreversing.com/   逆向联系集系列
