@@ -18,10 +18,10 @@
 ## 4、附录-日志详述
 ### 4.1、/var/log/auth.log日志详述
     auth.log中记录了用户的登录信息，包括用户名、登录时间、登录IP地址等。通过分析auth.log，可以了解用户登录情况、异常登录行为等。其中每次登陆成功会打开2个session并且记录下对应的用户名、登录时间、登录IP地址、登陆端口等，关闭时同样会关闭该两个session。在人工分析下可使用命令grep "Accepted" /var/log/auth.log 查看对应的日志中存在哪些账户成功登陆（部分已经已经被备份了需要重新取出来分析）。
-![日志图片](./imgs/linux-forensic-syslog-authlog1.png)
+![日志图片](../linuxforensic/imgs/linux-forensic-syslog-authlog1.png)
 
     在该日志中，对于登陆失败的记录，同样会记录对应的用户名、登陆时间、登陆IP地址、登陆端口等。失败登陆在我们的取证分析中还是较为重要的，攻击者可能会对主机进行爆破登陆，可以使用爆破IP进行扩线（扩展线索），找到其中疑似攻击者的IP（对于一些僵尸网络的爆破IP可酌情排除）。同样的，在人工分析下可使用命令grep "Failed" /var/log/auth.log 查看对应的日志中存在哪些账户失败登陆。
-![日志图片](./imgs/linux-forensic-syslog-authlog2.png)
+![日志图片](../linuxforensic/imgs/linux-forensic-syslog-authlog2.png)
 
 ## 5、引用
     1. 
