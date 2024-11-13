@@ -18,4 +18,4 @@
 ## 4、附录-日志详述
     1、/var/log/auth.log日志详诉
         auth.log中记录了用户的登录信息，包括用户名、登录时间、登录IP地址等。通过分析auth.log，可以了解用户登录情况、异常登录行为等，其日志信息如下。
-        ![auth.log日志](./imgs/linux-forensic-syslog-authlog1.png "auth.log")
+        ![日志图片](https://github.com/binlmmhc/binlmmhc.github.io/blob/master/linuxforensic/imgs/linux-forensic-syslog-authlog1.png)
