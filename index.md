@@ -1,6 +1,8 @@
 # security-blog
 收集的情报、取证及恶意软件相关的博客地址
 
+![日志图片](./imgs/linux-forensic-syslog-authlog1.png)
+
 个人博客：
 -   https://binlmmhc.me/    我的个人博客，CTF，PWN, 恶意代码，安全开发 ，目前已经放弃个人网站了。
 -   https://secrary.com/    一个喜欢研究恶意样本和CTF的二进制man 
