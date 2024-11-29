@@ -90,5 +90,8 @@ APT事件相关披露博客：
 -   IOC情报
     -   https://iocparser.com/  IOC解析网站，可用于提取网页IOC，提高些IOC提取效率
 
+    网络数据分析及回放:
+    -   https://reqable.com/zh-CN/windows/ Reqable工具，网络数据回放及分析工具
+
 yara规则仓库:
 -    https://github.com/bartblaze/Yara-rules
