@@ -33,6 +33,7 @@
 
 ### 4.1、/var/log/lastlog日志详述
     lastlog日志记录了所有账户最近一次登录的时间以及IP地址，通过该日志我们可以分析出近期账户的活跃信息，但是该日志是一个二进制文件并不能直接编辑，需要使用命令lastlog获取到其中的信息，下图为执行该命令获取到的账户最近一次登录信息。注：其中root命令的登录信息通过sudo su切换过去的root其最近一次登录信息并不会产生变化。
+
 ![日志图片](./imgs/linux-forensic-syslog-lastlog1.png)
 
 ### 4.2、/var/log/wtmp日志详述
