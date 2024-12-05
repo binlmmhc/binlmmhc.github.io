@@ -27,9 +27,6 @@
         一般僵尸网络等非常喜欢使用定时任务进行驻留。该部分我们先暂时不用考虑去分析定时任务数据，我们通过cron.log日志分析定时任务的创建、删除
     与执行轨迹。
 
-### 3.4、攻击者利用
-
-
 ## 4、附录-日志详述
 
 ### 4.1、/var/log/lastlog日志详述
@@ -75,7 +72,8 @@
 
 ![日志图片](./imgs/linux-forensic-syslog-cron.png)
 
-    上述的日志记录的定时任务主要为"/etc/crontab"、"/var/spool/cron/"以及"/etc/cron.d/"目录下的文件。对于"/etc/cron.xxily/"目录下的文件，其执行创建等并不会进行记录。
+        上述的日志记录的定时任务主要为"/etc/crontab"、"/var/spool/cron/"以及"/etc/cron.d/"目录下的文件。对于"/etc/cron.xxily/"
+    目录下的文件，其执行创建等并不会进行记录。
 
 ![日志图片](./imgs/linux-forensic-syslog-cron1.png)
 
