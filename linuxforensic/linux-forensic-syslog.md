@@ -6,17 +6,25 @@
     Linux类系统日志涉及的文件与路径如下：
     1.  /var/log/messages
         该文件记录了系统启动后的信息和错误日志，是查看Linux系统信息最常用的文件之一。
-    2.  /var/log/secure or /var/log/auth.log
+    2. /var/log/syslog
+        该文件记录了内核消息和系统服务的状态。
+    3. /var/log/dmesg
+        该文件记录了系统内核启动信息，包括硬件检测和驱动加载、文件系统检测等。
+    4. /var/log/boot.log
+        该文件记录了系统启动信息，包括内核版本、硬件检测和驱动加载等。
+    5.  /var/log/secure or /var/log/auth.log
         该文件记录了用户登录和权限认证信息，包括密码错误日志、root用户的登录记录等。
-    3.  /etc/rsyslog.conf 或 /etc/rsyslog.d目录下的日志配置文件
+    6.  /etc/rsyslog.conf 或 /etc/rsyslog.d目录下的日志配置文件
         该文件是系统日志配置文件，记录了各种日志的输出位置、日志类型以及日志级别等。
-    4.  /var/log/lastlog
-        该文件记录了所有账户最近一次登录的时间以及IP地址。
-    5.  /var/log/wtmp
-        该文件记录了系统中所有账户的登录、注销及系统启动和关闭的信息。
-    6.  /var/log/btmp
-        该文件记录系统中账户登录失败的日志文件，通过该日志我们可以分析出有哪些账户被尝试用于登录系统。
-    7.  /var/log/cron.log
+    7.  /var/log/lastlog
+        该文件记录了所有账户最近一次登录的时间以及IP地址。与命令lastlog配合使用。
+    8.  /var/log/wtmp 或 /var/log/utmp
+        该文件记录了系统中所有账户的登录、注销及系统启动和关闭的信息。与命令last配合使用。
+    9.  /var/log/btmp
+        该文件记录系统中账户登录失败的日志文件，通过该日志我们可以分析出有哪些账户被尝试用于登录系统。与命令lastb配合使用。
+    10.  /var/log/auth.log
+        该文件记录了用户的登录信息，包括用户名、登录时间、登录IP地址等。与grep命令配合使用。
+    11.  /var/log/cron.log
         该文件记录了定时任务相关的信息，包括创建、删除和执行情况等。
 
 ## 3、系统日志取证场景分析
@@ -42,7 +50,7 @@
 
 ![日志图片](./imgs/linux-forensic-syslog-lastlog1.png)
 
-### 4.2、/var/log/wtmp日志详述
+### 4.2、/var/log/wtmp or /var/log/utmp日志详述
         wtmp日志记录了系统中所有账户的登录、注销及系统启动和关闭的信息，该日志中记录了登录的用户名、pts号、登录IP、登录时间及该账户的活动
     时间长度，该日志同样是一个二进制文件并不能直接编辑，可以通过命令last查看，使用last命令查看的信息如下图。
 
