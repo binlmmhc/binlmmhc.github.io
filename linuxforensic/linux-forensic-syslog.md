@@ -1,6 +1,8 @@
 # Linux类系统日志取证分析
 
 ## 1、系统日志概述
+        系统日志是记录Linux系统中与系统运行、用户登录和权限认证相关的信息，包括内核消息、系统服务的状态、用户登录和权限认证等信息。系统日志可以帮助我们
+    分析系统安全事件、定位系统问题以及进行数据恢复等。
 
 ## 2、系统日志涉及的文件与路径
     Linux类系统日志涉及的文件与路径如下：
@@ -76,6 +78,10 @@
     同样的，在人工分析下可使用命令grep "Failed" /var/log/auth.log 查看对应的日志中存在哪些账户失败登陆。
 
 ![日志图片](./imgs/linux-forensic-syslog-authlog2.png)
+
+        对于sudo su切换过去的用户，在auth.log文件中同样会记录是从哪个用户root用户。
+
+![日志图片](./imgs/linux-forensic-syslog-authlog3.png)
 
 ### 4.5、/var/log/cron.log日志详述
         cron.log日志记录了定时任务相关的信息，通过该日志我们可以分析出有哪些定时任务被创建、删除以及执行情况。在debian类系统如ubuntu等，
