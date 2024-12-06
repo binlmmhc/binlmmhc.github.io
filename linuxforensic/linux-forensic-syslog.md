@@ -43,6 +43,9 @@
         一般僵尸网络等非常喜欢使用定时任务进行驻留。该部分我们先暂时不用考虑去分析定时任务数据，我们通过cron.log日志分析定时任务的创建、删除
     与执行轨迹。
 
+### 3.4、攻击者利用了rootkit进行驻留
+        攻击者利用了rootkit进行驻留，当其以内核模块作为rootkit驻留方式时，我们需要分析dmesg日志，通过该日志我们可以了解系统内核启动信息、硬件检测和驱动加载等。
+
 ## 4、附录-日志详述
 
 ### 4.1、/var/log/lastlog日志详述
@@ -98,6 +101,14 @@
 ![日志图片](./imgs/linux-forensic-syslog-cron1.png)
 
     ref:https://little-star.love/posts/805d7d3d/
+
+### 4.5、/var/log/dmesg日志详述
+        dmesg日志记录了系统内核启动信息，包括硬件检测和驱动加载、文件系统检测等。该日志同样是一个二进制文件并不能直接编辑，需要使用命令
+    dmesg查看该日志信息。
+        当攻击者使用insmod等命令直接加载ko内核模块时，在第一次加载时dmesg中会记录该模块的加载信息，但是加载的信息不是很多，加载图如下。
+    当系统没有重启后再次加载该模块时，dmesg中不会记录该模块的加载信息。
+
+![日志图片](./imgs/linux-forensic-syslog-dmesg1.png)
 
 ## 5、引用
     1、https://www.isisy.com/1477.html
