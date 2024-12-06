@@ -28,6 +28,11 @@
         该文件记录了用户的登录信息，包括用户名、登录时间、登录IP地址等。与grep命令配合使用。
     11. /var/log/cron.log
         该文件记录了定时任务相关的信息，包括创建、删除和执行情况等。
+    12. .bash_history文件分析
+        该文件记录了用户执行过的命令，但在很多入侵场景中该文件都被清除了。
+    13. /var/log/journal/
+        该日志其实挺重要的，该目录下记录了内核日志，包括系统启动、内核消息和驱动加载等。其除了记录系统的各种信息外，同样还记录了各个
+        用户的信息。该日志会单独整理一个分析文档。
 
 ## 3、系统日志取证场景分析
 
@@ -48,9 +53,9 @@
 ![日志图片](./imgs/linux-forensic-syslog-brute.png)
 
 ### 3.3、攻击者利用定时任务进行驻留
-        一般僵尸网络等非常喜欢使用定时任务进行驻留。该部分我们先暂时不用考虑去分析定时任务数据，我们通过cron.log日志分析定时任务的创建、删除
-    与执行轨迹。
-        可以使用命令grep "username" /var/log/cron.log查看指定用户执行的定时任务信息。
+        一般僵尸网络等非常喜欢使用定时任务进行驻留。该部分我们先暂时不用考虑去分析定时任务数据，我们通过cron.log日志分析定时任务的创建、
+    删除与执行轨迹。
+        可以使用命令grep "username" /var/log/cron.log查看指定用户执行的定时任务信息，当需要所有用户的执行记录直接输出分析就行。
 
 ![日志图片](./imgs/linux-forensic-syslog-cron2.png)
 
@@ -65,6 +70,8 @@
         同样的可以使用命令grep "module verification" /var/log/dmesg 或 /var/log/kern.log查看外部模块加载时的签名验证信息。
 
 ![日志图片](./imgs/linux-forensic-syslog-rootkit1.png)
+
+### 3.5、攻击者利用了服务进行驻留
 
 ## 4、日志详述
 
@@ -127,6 +134,12 @@
         当系统没有重启后再次加载该模块时，dmesg中不会记录该模块的加载信息。
 
 ![日志图片](./imgs/linux-forensic-syslog-dmesg1.png)
+
+### 4.6、.bash_history文件分析
+        该文件记录了用户执行过的命令，但在很多入侵场景中该文件都被清除了,在分析该文件时需要结合其他日志进行分析。可以直接输出分析或者
+    使用命令history查看。
+
+![日志图片](./imgs/linux-forensic-syslog-bashhistory.png)
 
 ## 5、引用
     1、https://www.isisy.com/1477.html
