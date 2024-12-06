@@ -42,12 +42,23 @@
 ### 3.3、攻击者利用定时任务进行驻留
         一般僵尸网络等非常喜欢使用定时任务进行驻留。该部分我们先暂时不用考虑去分析定时任务数据，我们通过cron.log日志分析定时任务的创建、删除
     与执行轨迹。
+        可以使用命令grep "username" /var/log/cron.log查看指定用户执行的定时任务信息。
+
+![日志图片](./imgs/linux-forensic-syslog-cron2.png)
 
 ### 3.4、攻击者利用了rootkit进行驻留
         攻击者利用了rootkit进行驻留，当其以内核模块(例如ko类的relocate重定向文件)作为rootkit驻留方式时，我们需要分析dmesg日志，通过该日志我们可以了解系统内核启动信息、
     硬件检测和驱动加载等。
+        除了dmesg日志外，kern.log文件具有同样的作用。可以使用命令grep "loading out-of-tree" /var/log/dmesg 或 /var/log/kern.log查看外部模块加载的信息。kern.log
+    日志中还具有更加详细的时间信息。
 
-## 4、附录-日志详述
+![日志图片](./imgs/linux-forensic-syslog-rootkit.png)
+
+        同样的可以使用命令grep "module verification" /var/log/dmesg 或 /var/log/kern.log查看外部模块加载时的签名验证信息。
+
+![日志图片](./imgs/linux-forensic-syslog-rootkit1.png)
+
+## 4、日志详述
 
 ### 4.1、/var/log/lastlog日志详述
         lastlog日志记录了所有账户最近一次登录的时间以及IP地址，通过该日志我们可以分析出近期账户的活跃信息，但是该日志是一个二进制文件并不能
@@ -104,10 +115,9 @@
     ref:https://little-star.love/posts/805d7d3d/
 
 ### 4.5、/var/log/dmesg日志详述
-        dmesg日志记录了系统内核启动信息，包括硬件检测和驱动加载、文件系统检测等。该日志同样是一个二进制文件并不能直接编辑，需要使用命令
-    dmesg查看该日志信息。
-        当攻击者使用insmod等命令直接加载ko内核模块时，在第一次加载时dmesg中会记录该模块的加载信息，但是加载的信息不是很多，加载图如下。
-    当系统没有重启后再次加载该模块时，dmesg中不会记录该模块的加载信息。
+        dmesg日志记录了系统内核启动信息，包括硬件检测和驱动加载、文件系统检测等。该日志可以使用命令dmesg查看该日志信息。当攻击者使用
+    insmod等命令直接加载ko内核模块时，在第一次加载时dmesg中会记录该模块的加载信息，但是加载的信息不是很多，加载图如下。
+        当系统没有重启后再次加载该模块时，dmesg中不会记录该模块的加载信息。
 
 ![日志图片](./imgs/linux-forensic-syslog-dmesg1.png)
 
